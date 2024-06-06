@@ -6,6 +6,17 @@ import { getMeal } from "@/lib/meals";
 
 import classes from "./page.module.css";
 
+export const generateMetadata = async ({ params }: PagePros) => {
+  const meal = getMeal(params.mealSlug);
+
+  if(!meal) return notFound();
+
+  return {
+    title: meal.title,
+    describe: meal.summary
+  }
+};
+
 const MealDetailPage: FC<PagePros> = ({ params }) => {
   const meal = getMeal(params.mealSlug);
 
@@ -13,7 +24,7 @@ const MealDetailPage: FC<PagePros> = ({ params }) => {
 
   meal.instructions = meal.instructions.replaceAll(/\n/g, "<br />");
 
-  const { title, image, summary, instructions, creator, creatorEmail } = meal;
+  const { title, image, summary, instructions, creator, creator_email } = meal;
 
   return (
   <>
@@ -24,7 +35,7 @@ const MealDetailPage: FC<PagePros> = ({ params }) => {
       <div className={classes.headerText}>
         <h1>{title}</h1>
         <p className={classes.creator}>
-          by <a href={`mailto:${creatorEmail}`}>{creator}</a>
+          by <a href={`mailto:${creator_email}`}>{creator}</a>
         </p>
         <p className={classes.summary}>{summary}</p>
       </div>

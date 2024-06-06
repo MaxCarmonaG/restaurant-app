@@ -26,7 +26,7 @@ const ImagePicker: FC<ImagePickerProps> = ({ label, name }) => {
 
     fileReader.onload = () => {
       const { result } = fileReader;
-      if(typeof result === "string") setPickedImage(result);
+      if (typeof result === "string") setPickedImage(result);
     }
 
     fileReader.readAsDataURL(file);

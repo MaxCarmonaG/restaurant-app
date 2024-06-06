@@ -4,7 +4,7 @@ export interface PagePros {
   }
 }
 
-export interface MealItemType {
+export interface MealDataType {
   id: string;
   title: string;
   slug: string;
@@ -12,5 +12,13 @@ export interface MealItemType {
   summary: string;
   instructions: string;
   creator: string;
-  creatorEmail: string;
+  creator_email: string;
+}
+
+export interface MealInputType extends Omit<MealDataType, 'id' | 'slug' | 'image'> {
+  image: File;
+}
+
+export interface FormState {
+  message: string | null
 }

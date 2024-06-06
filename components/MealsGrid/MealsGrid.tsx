@@ -1,10 +1,10 @@
 import { FC } from "react";
 import classes from "./MealsGrid.module.css";
 import MealItem from "../MealItem";
-import { MealItemType } from "@/types";
+import { MealDataType } from "@/types";
 
 interface MealsGridPros {
-  meals: MealItemType[];
+  meals: MealDataType[];
 }
 
 const MealsGrid: FC<MealsGridPros> = ({ meals }) => {
